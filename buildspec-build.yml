@@ -1,12 +1,11 @@
 # buildspec-build.yml
-
 version: 0.2
 
 # Environment variables and values used across phases
 env:
   variables:
-    # ECR URI where Docker image will be pushed
-    IMAGE_URI: "180789647333.dkr.ecr.us-east-1.amazonaws.com/eks-devops"
+    # ECR URI where the Docker image will be pushed
+    IMAGE_URI: "662513131574.dkr.ecr.us-east-1.amazonaws.com/eks-devops"
   exported-variables:
     # Variables that will be shared with downstream phases or pipelines
     - IMAGE_URI
@@ -48,4 +47,4 @@ artifacts:
   files:
     - exported-vars.env
     - buildspec-deploy.yml
-    - '**/kube-manifests/**/*'
+    - "**/kube-manifests/**/*"
