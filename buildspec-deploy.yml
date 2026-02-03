@@ -27,8 +27,8 @@ phases:
       - source ./exported-vars.env
       - echo "IMAGE_URI=$IMAGE_URI"
       - echo "IMAGE_TAG=$IMAGE_TAG"
-      # Replace placeholder in k8s YAML with actual image URI and tag
-      - echo "Updating container image in the k8s deployment YAML file"
+      # Replace placeholder in Kubernetes YAML with actual image URI and tag
+      - echo "Updating container image in the Kubernetes Deployment YAML file..."
       - sed -i 's@CONTAINER_IMAGE@'"$IMAGE_URI:$IMAGE_TAG"'@' kube-manifests/01-devops-nginx-deployment.yml
       - echo "Updated deployment manifest content:"
       - cat kube-manifests/01-devops-nginx-deployment.yml
@@ -45,7 +45,7 @@ phases:
       - echo "Updating kubeconfig with EKS cluster credentials..."
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
       # Deploy application manifests to EKS
-      - echo "Applying kubernetes manifests..."
+      - echo "Applying Kubernetes manifests..."
       - kubectl apply -f kube-manifests/
       # Wait for deployment rollout to complete
       - echo "Waiting for deployment rollout to complete..."
